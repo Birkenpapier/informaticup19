@@ -216,7 +216,8 @@ def run():
 
                 # from here random responses for starting the learning
 
-                final_response = {"type": "endRound"}
+                # final_response = {"type": "endRound"} DAS IST DAS UNTEN
+                final_response = np.asarray([1, 0, 0, 0, 0, 0, 0])
 
                 # till here random responses for starting the learning
 
