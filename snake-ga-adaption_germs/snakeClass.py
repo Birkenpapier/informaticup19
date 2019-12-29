@@ -217,7 +217,7 @@ def run():
                 # from here random responses for starting the learning
 
                 # final_response = {"type": "endRound"} DAS IST DAS UNTEN
-                final_response = np.asarray([1, 0, 0, 0, 0, 0, 0])
+                final_response = np.asarray([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) # erstmal 12 actions, hier typeRound end
 
                 # till here random responses for starting the learning
 
@@ -225,13 +225,15 @@ def run():
                 # predict action based on the old state
                 prediction = agent.model.predict(state_old.reshape((1,11)))
                 final_move = to_categorical(np.argmax(prediction[0]), num_classes=3)
+
+                final_response = np.asarray([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) # erstmal 12 actions, hier typeRound end
                 
             #perform new move and get new state
-            player1.do_move(final_move, player1.x, player1.y, game, food1, agent)
+            player1.do_move(final_move, player1.x, player1.y, game, food1, agent) # TODO: an dieser Stelle neuen JSON holen
             state_new = agent.get_state(game, player1, food1)
             
             #set treward for the new state
-            reward = agent.set_reward(player1, game.crash)
+            reward = agent.set_reward(player1, game.crash) # TODO: reward setzen
             
             #train short memory base on the new action and state
             agent.train_short_memory(state_old, final_move, reward, state_new, game.crash)
