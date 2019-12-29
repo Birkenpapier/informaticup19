@@ -25,6 +25,10 @@ class DQNAgent(object):
 
     def get_state(self, game, player, food):
 
+        # 10 actions (also anzahl runden 1 - 10) für quarantäne (nur infizierte städte)
+        # 15 actions (also anzahl runden 1 - 15) für flughafen schließen (nur infizierte städte)
+        # 15 actions (also anzahl runden 1 - 15) für flugverbindung sperren TODO: einschränkung überprüfen (eine stadt muss infiziert sein)
+
         state = [
             (player.x_change == 20 and player.y_change == 0 and ((list(map(add, player.position[-1], [20, 0])) in player.position) or
             player.position[-1][0] + 20 >= (game.game_width - 20))) or (player.x_change == -20 and player.y_change == 0 and ((list(map(add, player.position[-1], [-20, 0])) in player.position) or

@@ -9,7 +9,7 @@ import numpy as np
 
 # Set options to activate or deactivate the game view, and its speed
 # display_option = False
-display_option = False
+display_option = True
 speed = 0 # the higher the slower
 pygame.font.init()
 
@@ -212,6 +212,14 @@ def run():
             #perform random actions based on agent.epsilon, or choose the action
             if randint(0, 200) < agent.epsilon:
                 final_move = to_categorical(randint(0, 2), num_classes=3)
+                print(f"final_move: {final_move}")
+
+                # from here random responses for starting the learning
+
+                final_response = {"type": "endRound"}
+
+                # till here random responses for starting the learning
+
             else:
                 # predict action based on the old state
                 prediction = agent.model.predict(state_old.reshape((1,11)))
