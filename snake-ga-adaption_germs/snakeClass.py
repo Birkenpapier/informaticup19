@@ -232,7 +232,7 @@ def run():
             player1.do_move(final_move, player1.x, player1.y, game, food1, agent) # TODO: an dieser Stelle neuen JSON holen
             state_new = agent.get_state(game, player1, food1)
             
-            #set treward for the new state
+            #set reward for the new state
             reward = agent.set_reward(player1, game.crash) # TODO: reward setzen
             
             #train short memory base on the new action and state
